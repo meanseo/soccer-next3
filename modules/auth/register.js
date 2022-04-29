@@ -24,27 +24,37 @@ export const unregisterRequest = createAction(UNREGISTER_REQUEST, data => data)
 
 export function* registerSaga() {
     yield takeLatest(REGISTER_REQUEST, signup);
-    yield takeLatest(UNREGISTER_REQUEST, signup);
+    yield takeLatest(UNREGISTER_REQUEST, membershipWithdrawal);
 }
-function* signup() {
+function* signup(action) {
     try{
         console.log("핵심" + JSON.stringify(action))
-       const response = yield call (userRegisterApi, action.payload)
+       const response = yield call (registerAPI, action.payload)
        console.log("회원가입 서버 다녀옴: "+JSON.stringify(response.data))
-       yield put({type: USER_REGISTER_SUCCESS, payload: response.data})
+       yield put({type: REGISTER_SUCCESS, payload: response.data})
        yield put(window.location.href="/auth/login")
     }catch(error){
-        yield put({type: USER_REGISTER_FAILURE, payload: error.message})
+        yield put({type: REGISTER_FAILURE, payload: error.message})
     }
 }
-function* membershipWithdrawal(){
-    try{
-     }catch(error){
-     }
-}
-const userRegisterApi = async(payload) => await axios.post(
+
+const registerAPI = payload => axios.post(
     `${SERVER}/user/join`,payload, {headers}
 )
+function* membershipWithdrawal(){
+    try {
+        console.log(" **** 회원탈퇴 *** ")
+        
+    } catch (error) {
+        
+    }
+}
+const register = handleActions({
+    [HYDRATE] : (state, action) => ({
+        ...state, ...action.payload
+    })
+}, initialState)
+
 /** handleActions를 사용하기 전 (백업 용)
 const auth = (state = initialState, action) =>{
     switch(action.type){
@@ -64,4 +74,4 @@ const auth = (state = initialState, action) =>{
             return state;
     }
 }*/
-export default auth
+export default register
