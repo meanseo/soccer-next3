@@ -20,6 +20,8 @@ const LOGIN_SUCCESS = 'auth/LOGIN_SUCCESS';
 const LOGIN_FAILURE = 'auth/LOGIN_FAILURE';
 const LOGIN_CANCELLED = 'auth/LOGIN_CANCELLED';
 const LOGOUT_REQUEST = 'auth/LOGOUT_REQUEST';
+const LOGOUT_SUCCESS = 'auth/LOGOUT_SUCCESS'
+const LOGOUT_FAILURE = 'auth/LOGOUT_FAILURE'
 const SAVE_TOKEN = 'auth/SAVE_TOKEN';
 const DELETE_TOKEN = 'auth/DELETE_TOKEN';
 
@@ -43,10 +45,22 @@ function* signin(action) {
         yield put({type: LOGIN_FAILURE, payload: error.message})
     }
 }
+function* logout(){
+    try{
+        const response = yield call(logoutAPI);
+        yield put({type: LOGOUT_SUCCESS});
+        yield put({type: DELETE_TOKEN});
+        yield put(window.location.href = "/")
+    }catch(error){
+        yield put({type: LOGOUT_FAILURE});
+    }
+}
 
 const loginAPI = payload => axios.post(
     `${SERVER}/user/login`,payload, {headers}
 )
+const logoutAPI = () => axios.post(`${SERVER}/user/logout`, {}, {headers})
+
 const login = handleActions({
     [HYDRATE] : (state, action) => ({
         ...state, ...action.payload

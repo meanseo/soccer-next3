@@ -19,6 +19,7 @@ const onSubmit = e => {
   e.preventDefault()
   alert(`로그인 정보:`+JSON.stringify(login))
   dispatch(loginRequest(login))
+  router.push('/user/profile')
 }
   return (
     <Login onChange= {onChange} onSubmit={onSubmit}/>

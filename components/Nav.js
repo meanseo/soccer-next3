@@ -12,7 +12,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { createSvgIcon } from '@mui/material/utils';
 import { useSelector } from 'react-redux'
-
+import { logoutRequest } from '@/modules/auth/login'
+import { useDispatch } from 'react-redux';
 const HomeIcon = createSvgIcon(
   <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />,
   'Home',
@@ -21,6 +22,7 @@ const HomeIcon = createSvgIcon(
 const basicSettings = {subTitles: ['카운터', '계산기', 'BMI', '게시판'], urls: ["/basic/counter","/basic/calc","/basic/bmi", '/board/list']};
 
 export function Nav(){
+  const dispatch = useDispatch()
   const [imageInfos, setImageInfos] = useState({imageUrl: 'https://as2.ftcdn.net/v2/jpg/01/85/61/65/1000_F_185616556_uCc1J5d5GNfRH6ErgP1G8x8ORLeG25en.jpg', imageTitle: 'sign'});
   const [userUrls, setUserUrls] = useState({subTitles:[], urls:[]});
 
@@ -41,6 +43,11 @@ export function Nav(){
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogout = e => {
+    e.preventDefault()
+    dispatch(logoutRequest())
+  }
 
   const isLoggined = useSelector(state => state.login.isLoggined)
 
@@ -92,6 +99,11 @@ export function Nav(){
                   <a href={urls}><Typography textAlign="center" onClick={handleCloseUserMenu}>{userUrls.subTitles[i]}</Typography></a>
                 </MenuItem> ))}
             </Menu>
+          </Box>
+          <Box>
+              <Button onClick={handleLogout}
+              sx={{color: 'white',display: 'block'}}>
+              로그아웃</Button>
           </Box>
         </Toolbar>
       </Container>
