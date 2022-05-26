@@ -26,13 +26,12 @@ function Copyright(props) {
   );
 }
 const theme = createTheme();
-const textMap = {userlogin: "로그인"}
 
 export function Login({onChange, onSubmit}){
   return (
     <ThemeProvider theme={theme}>
     <Head>
-    <title>로그인| </title>
+    <title> 로그인 </title>
     </Head>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -56,7 +55,7 @@ export function Login({onChange, onSubmit}){
               required
               fullWidth
               id="userid"
-              label="사용자ID"
+              label="사용자 ID"
               name="userid"
               autoComplete="email"
               autoFocus

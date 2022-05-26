@@ -14,14 +14,13 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Head from 'next/head';
 const theme = createTheme();
-const textMap = {userJoin: "회원가입"}
 
 export function Register({onChange, onSubmit}){
 
   return (
     <ThemeProvider theme={theme}>
     <Head>
-    <title>사용자| </title>
+    <title>사용자| 회원가입</title>
     </Head>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -45,36 +44,25 @@ export function Register({onChange, onSubmit}){
               <Grid item xs={12} sm={6} >
                 <TextField
                   autoComplete="given-name"
-                  name="userid"
+                  name="username"
                   required
                   fullWidth
-                  id="userid"
+                  id="username"
                   label="사용자ID"
                   onChange={onChange}
                   autoFocus
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={6}>
                 <TextField
                   required
                   fullWidth
                   id="name"
                   label="이 름"
                   name="name"
-                  autoComplete="family-name"
+                  autoComplete="name"
                   onChange={onChange}
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  onChange={onChange}/>
-                  
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -91,33 +79,11 @@ export function Register({onChange, onSubmit}){
                 <TextField
                   required
                   fullWidth
-                  name="phone"
-                  label="전화번호"
-                  type="text"
-                  id="phone"
-                  onChange={onChange}/>
-              </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="birth"
-                  label="생년월일"
-                  type="text"
-                  id="birth"
-                  onChange={onChange}/>
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="address"
-                  label="주소"
-                  type="text"
-                  id="address"
-                  onChange={onChange}
-                />
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  onChange={onChange}/>  
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel

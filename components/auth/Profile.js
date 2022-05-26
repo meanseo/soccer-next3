@@ -1,19 +1,12 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import styles from '@/styles/Profile.module.css';
-
 
 function Copyright(props) {
     return (
@@ -67,19 +60,16 @@ export function Profile({loginUser}) {
 
                         <div className="styles.card">
                             <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFyXUt8-ai8QjFyYGSARe6I2OfvqnaSgbHiw&usqp=CAU"
+                                src="https://www.w3schools.com/w3images/team2.jpg"
                                 alt="John"
                                 style={{
                                     width: "100%"
                                 }}/>
                             <h1>
-                            {loginUser.name}
+                            {loginUser.username}
                             </h1>
                             <p className="title">CEO & Founder, Example</p>
-                            <p>이메일 : {loginUser.email}</p>
-                            <p>전화번호 : {loginUser.phone}</p>
-                            <p>생년월일 : {loginUser.birth}</p>
-                            <p>주소 : {loginUser.address}</p>
+                            <p>이름 : {loginUser.name}</p>
                             <div
                                 style={{
                                     margin: "24px 0"

@@ -1,14 +1,15 @@
-import { Footer, Layout, Pagination, Nav, Table, Modal } from '@/components'
+import { Footer, Layout, Pagination, Nav, Table, Modal, Home} from '@/components'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
+import tableStyles from '@/styles/Table.module.css'
+import { useEffect } from 'react'
 
-export default function Home() {
-  return (
-    <Layout>
-      <Table/>
-      <Pagination/>
-      <Modal/>
-    </Layout>
+export default function HomePage(){
+  return( 
+      
+      <Layout>
+      <Home/>
+      </Layout>
   )
+  
 }

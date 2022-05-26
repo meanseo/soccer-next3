@@ -19,7 +19,8 @@ const HomeIcon = createSvgIcon(
   'Home',
 );
 
-const basicSettings = {subTitles: ['카운터', '계산기', 'BMI', '게시판'], urls: ["/basic/counter","/basic/calc","/basic/bmi", '/board/list']};
+// const basicSettings = {subTitles: ['카운터', '계산기', 'BMI', '게시판'], urls: ["/basic/counter","/basic/calc","/basic/bmi", '/board/list']};
+const basicSettings = {subTitles: ['카운터', '게시판'], urls: ['/basic/counter','/board/list']};
 
 export function Nav(){
   const dispatch = useDispatch()
